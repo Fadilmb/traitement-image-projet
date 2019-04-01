@@ -12,8 +12,8 @@ function image_lbp = lbp (image)
     matrix_arrows = size_image(1);
     matrix_columns = size_image(2);
     
-    for i=10:10
-        for j=10:10
+    for i=2:matrix_arrows-1
+        for j=2:matrix_columns-1
             m=1;
             for k=-1:1
                 for l=-1:1
@@ -32,6 +32,18 @@ function image_lbp = lbp (image)
             image_lbp(i,j)=bintodec(windows)
          end            
      end
+endfunction
+
+
+function hist_grid(image_lbp)
+    grid_size_x = 8;
+    grid_size_y = grid_size_x;
+    
+    
+    for i=1
+    end
+    
+    
 endfunction
 
 

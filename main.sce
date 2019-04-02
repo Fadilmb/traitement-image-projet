@@ -35,7 +35,7 @@ function image_lbp = lbp (image)
 endfunction
 
 
-function hist_lbp = hist_grid(image_lbp)
+function hist_lbp_image = hist_lbp(image_lbp)
     size_image=size(image);
     image_length = size_image(1);
     image_width = size_image(2);
@@ -58,12 +58,46 @@ function hist_lbp = hist_grid(image_lbp)
             indice = indice +1;
          end
      end
-     hist_lbp = histc(x,histgrid,normalization=%f);
+     hist_lbp_image = histc(x,histgrid,normalization=%f);
 endfunction
 
 
 function distance = distance_eucledienne(matrice1, matrice2)
     distance = sqrt(sum((matrice1-matrice2)^2));
+endfunction
+
+function database_image = load_database_image()
+    f= findfiles('../base_de_donnee','*.jpg');
+    f_max = size(f)(1);
+    database_image = list();
+    
+    for i=1:f_max
+        image=string(f(i));
+        database_image(i)=imread(image)(:,:,1);
+    end
+     
+endfunction
+
+function database_lbp = database_imagetolbp(database_image)
+        i_max = size(database_image);
+        database_lbp = list();
+        
+        for i=1:i_max
+            image_lbp = lbp(database_image(i));
+            database_lbp(i)= hist_lbp(image_lbp);
+        end
+endfunction
+
+function distances = compare_lbp(image,database_lbp)
+    image = image(:,:,2);
+    image_lbp = lbp (image);
+    hist_lbp_img = hist_lbp(image_lbp);
+    i_max= size(database_lbp);
+    
+    for i=1:i_max
+        distances(i)=distance_eucledienne(hist_lbp_img, database_lbp(i))
+    end
+    
 endfunction
 
 /*
@@ -84,9 +118,14 @@ function count= count_matrice(matrice, number)
 endfunction
 */
 
-image = imread('Unknown.jpg');
+database_image = load_database();
+database_lbp = database_imagetolbp(database_image);
+
+
+/*
+image = imread(name);
 image = image(:,:,2);
 image_lbp = lbp (image);
 histgrid = hist_grid(image_lbp);
-
+/*
 

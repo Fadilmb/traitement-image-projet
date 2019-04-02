@@ -60,6 +60,12 @@ function hist_lbp = hist_grid(image_lbp)
      end
      hist_lbp = histc(x,histgrid,normalization=%f);
 endfunction
+
+
+function distance = distance_eucledienne(matrice1, matrice2)
+    distance = sqrt(sum((matrice1-matrice2)^2));
+endfunction
+
 /*
 function count= count_matrice(matrice, number)
     size_image=size(matrice);

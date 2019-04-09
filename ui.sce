@@ -11,17 +11,17 @@ handles.Info=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enabl
 
 
 f.visible = "on";
-exec("main.sce",1);
+
 
 //////////
 // Callbacks are defined as below. Please do not delete the comments as it will be used in coming version
 //////////
 
 function Input_callback(handles)
-    handles.Respond.String = "This personne is not autorize to enter in the systeme.";
     File = uigetfile('*');
     img_test = imread(File);
     imshow(img_test);
+    handles.Respond.String = "This personne is not autorize to enter in the systeme.";
 
 endfunction
 
@@ -33,4 +33,5 @@ function Save_callback(handles)
     imwrite(img_save, image);
 endfunction
 
+exec("main.sce",1);
 

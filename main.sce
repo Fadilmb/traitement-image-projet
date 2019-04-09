@@ -118,8 +118,8 @@ function count= count_matrice(matrice, number)
 endfunction
 */
 
-database_image = load_database();
-database_lbp = database_imagetolbp(database_image);
+//database_image = load_database_image();
+//database_lbp = database_imagetolbp(database_image);
 
 
 /*

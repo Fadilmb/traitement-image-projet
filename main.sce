@@ -67,7 +67,7 @@ function distance = distance_eucledienne(matrice1, matrice2)
 endfunction
 
 function database_image = load_database_image()
-    f= findfiles('../base_de_donnee','*.jpg');
+    f= findfiles('../base_de_donnee','*.png');
     f_max = size(f)(1);
     database_image = list();
     
@@ -97,7 +97,6 @@ function distances = compare_lbp(image,database_lbp)
     for i=1:i_max
         distances(i)=distance_eucledienne(hist_lbp_img, database_lbp(i))
     end
-    
 endfunction
 
 /*
@@ -117,8 +116,8 @@ function count= count_matrice(matrice, number)
     
 endfunction
 */
-
-//database_image = load_database_image();
+database_image = list();
+database_image = load_database_image();
 //database_lbp = database_imagetolbp(database_image);
 
 

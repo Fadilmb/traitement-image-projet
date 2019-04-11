@@ -29,9 +29,8 @@ endfunction
 function Save_callback(handles)
     File = uigetfile('*');
     img_save = imread(File);
-    d = dir("base_de_donnee");
-//    future = length(d([d.isdir]==0));
-    image = strcat(["/base_de_donee/subjet" string(30) ".png"]);
+    f= findfiles('../base_de_donnee','*.png');
+    image = strcat(["/base_de_donee/subjet" string(size(f)) ".png"]);
     imwrite(img_save, image);
 endfunction
 

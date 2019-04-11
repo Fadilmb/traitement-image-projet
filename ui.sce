@@ -29,9 +29,14 @@ endfunction
 function Save_callback(handles)
     File = uigetfile('*');
     img_save = imread(File);
-    f= findfiles('../base_de_donnee','*.png');
-    image = strcat(["/base_de_donee/subjet" string(size(f)) ".png"]);
-    imwrite(img_save, image);
+    f= findfiles('./base_de_donnee','*.png');
+    nb = size(f)(1);
+    nb = nb + 1;
+    path = strcat(["./base_de_donee/subjet" string(nb) ".png"]);
+    handles.Respond.String = "Personne save on the systeme.";
+    imwrite(img_save, "test.png");
+    saved = imread(path);
+    imshow(saved);
 endfunction
 
 exec("main.sce",1);

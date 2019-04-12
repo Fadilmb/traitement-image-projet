@@ -36,7 +36,7 @@ endfunction
 
 
 function hist_lbp_image = hist_lbp(image_lbp)
-    size_image=size(image);
+    size_image = size(image_lbp);
     image_length = size_image(1);
     image_width = size_image(2);
     
@@ -54,17 +54,17 @@ function hist_lbp_image = hist_lbp(image_lbp)
                     grid(i-8*k,j-8*l)=image_lbp(i,j);
                 end
             end
-            histgrid(indice,:) = histc(x,grid,normalization=%f);
+           hist_lbp_image(indice,:) = histc(x,grid,normalization=%f);
             indice = indice +1;
          end
      end
-     hist_lbp_image = histc(x,histgrid,normalization=%f);
 endfunction
 
 
 function distance = distance_eucledienne(matrice1, matrice2)
-    distance = sqrt(sum((matrice1-matrice2)^2));
+    distance = sqrt(sum((matrice1-matrice2).^2));
 endfunction
+
 
 function database_image = load_database_image()
     f= findfiles('../base_de_donnee','*.png');
@@ -75,8 +75,8 @@ function database_image = load_database_image()
         image=string(f(i));
         database_image(i)=imread(image)(:,:,1);
     end
-     
 endfunction
+
 
 function database_lbp = database_imagetolbp(database_image)
         i_max = size(database_image);
@@ -88,43 +88,18 @@ function database_lbp = database_imagetolbp(database_image)
         end
 endfunction
 
+
 function distances = compare_lbp(image,database_lbp)
-    image = image(:,:,2);
+    image = image(:,:,1);
     image_lbp = lbp (image);
     hist_lbp_img = hist_lbp(image_lbp);
     i_max= size(database_lbp);
     
     for i=1:i_max
         distances(i)=distance_eucledienne(hist_lbp_img, database_lbp(i))
-    end
+    ends
 endfunction
 
-/*
-function count= count_matrice(matrice, number)
-    size_image=size(matrice);
-    matrix_arrows = size_image(1);
-    matrix_columns = size_image(2);
-    count = 0;
-    
-    for i=1:matrix_arrows
-       for j=1:matrix_columns
-           if matrice(i,j) == number
-               count = count +1;
-           end
-       end
-    end
-    
-endfunction
-*/
-database_image = list();
+
 database_image = load_database_image();
-//database_lbp = database_imagetolbp(database_image);
-
-
-/*
-image = imread(name);
-image = image(:,:,2);
-image_lbp = lbp (image);
-histgrid = hist_grid(image_lbp);
-/*
-
+database_lbp = database_imagetolbp(database_image);

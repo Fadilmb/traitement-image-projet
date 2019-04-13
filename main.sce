@@ -97,7 +97,7 @@ function distances = compare_lbp(image,database_lbp)
     
     for i=1:i_max
         distances(i)=distance_eucledienne(hist_lbp_img, database_lbp(i))
-    ends
+    end
 endfunction
 
 

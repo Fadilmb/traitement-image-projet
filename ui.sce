@@ -33,12 +33,22 @@ function Save_callback(handles)
     nb = size(f)(1);
     nb = nb + 1;
     path = strcat(["subject" string(nb) ".png"]);
-    handles.Respond.String = "Personne save on the systeme.";
+
     cd("./base_de_donnee");
     imwrite(img_save, path);
     saved = imread(path);
     imshow(saved);
+
+    
+    add = size(database_image);
+    disp(add);
+    add = add + 1;
+    database_image(add) = imread(path)(1);
+    tmp = lbp(database_image(add));
+    database_lbp(add) = hist_lbp(tmp);
+    handles.Respond.String = "Personne save on the systeme.";
     cd("..");
+
 endfunction
 
 exec("main.sce",1);

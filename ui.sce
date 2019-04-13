@@ -29,7 +29,7 @@ function Input_callback(handles)
        if distance(i) < distance(tmp) then tmp = i;
        end  
     end
-    if distance(tmp) < 10 then handles.Respond.String = "This personne is autorize to enter in the systeme.";
+    if distance(tmp) < 300 then handles.Respond.String = "This personne is autorize to enter in the systeme.";
     else handles.Respond.String = "This personne is not autorize to enter in the systeme.";
     end
 endfunction

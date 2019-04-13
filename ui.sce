@@ -12,7 +12,7 @@ handles.Info=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enabl
 
 f.visible = "on";
 
-
+exec("main.sce", -1);
 //////////
 // Callbacks are defined as below. Please do not delete the comments as it will be used in coming version
 //////////
@@ -59,5 +59,5 @@ function Save_callback(handles)
 
 endfunction
 
-exec("main.sce",1);
+
 

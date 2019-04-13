@@ -101,8 +101,10 @@ function distances = compare_lbp(image,database_lbp)
     for i=1:i_max
         distances(i)=distance_eucledienne(hist_lbp_img, database_lbp(i))
     end
+    disp("compare_lbp terminé");
 endfunction
 
 
 database_image = load_database_image();
 database_lbp = database_imagetolbp(database_image);
+disp("base de donnée chargé");

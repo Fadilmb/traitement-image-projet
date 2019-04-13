@@ -23,6 +23,7 @@ function Input_callback(handles)
     imshow(img_test);
     distance = compare_lbp(img_test, database_lbp);
     i_max = size(distance);
+    i = 1;
     tmp = distance(i);
     for i=1:i_max
        if distance(i) < distance(tmp) then tmp = i;

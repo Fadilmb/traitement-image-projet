@@ -11,6 +11,7 @@ function image_lbp = lbp (image)
     size_image=size(image);
     matrix_arrows = size_image(1);
     matrix_columns = size_image(2);
+    image_lbp = [];
     
     for i=2:matrix_arrows-1
         for j=2:matrix_columns-1
@@ -39,6 +40,7 @@ function hist_lbp_image = hist_lbp(image_lbp)
     size_image = size(image_lbp);
     image_length = size_image(1);
     image_width = size_image(2);
+    hist_lbp_image = [];
     
     grid_size_x = 8;
     grid_size_y = grid_size_x;
@@ -94,6 +96,7 @@ function distances = compare_lbp(image,database_lbp)
     image_lbp = lbp (image);
     hist_lbp_img = hist_lbp(image_lbp);
     i_max= size(database_lbp);
+    distances = [];
     
     for i=1:i_max
         distances(i)=distance_eucledienne(hist_lbp_img, database_lbp(i))

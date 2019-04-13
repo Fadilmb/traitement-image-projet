@@ -44,8 +44,8 @@ function Save_callback(handles)
     disp(add);
     add = add + 1;
     database_image(add) = imread(path)(1);
-    tmp = lbp(database_image(add));
-    database_lbp(add) = hist_lbp(tmp);
+    img_tmp = lbp(database_image(add));
+    database_lbp(add) = hist_lbp(img_tmp);
     handles.Respond.String = "Personne save on the systeme.";
     cd("..");
 

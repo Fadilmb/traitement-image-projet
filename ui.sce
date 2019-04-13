@@ -11,8 +11,11 @@ handles.Info=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enabl
 
 
 f.visible = "on";
+cd("./base_de_donnee");
+exec("../main.sce", -1);
 
-exec("main.sce", -1);
+cd("..");
+
 //////////
 // Callbacks are defined as below. Please do not delete the comments as it will be used in coming version
 //////////

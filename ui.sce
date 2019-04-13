@@ -21,8 +21,16 @@ function Input_callback(handles)
     File = uigetfile('*');
     img_test = imread(File);
     imshow(img_test);
-    handles.Respond.String = "This personne is not autorize to enter in the systeme.";
-    
+    distance = compare_lbp(img_test, database_lbp);
+    i_may = size(distance);
+    tmp = distance(i);
+    for i=1:i_max
+       if distance(i) < distance(tmp) then tmp = i;
+       end  
+    end
+    if distance(tmp) < 10 then handles.Respond.String = "This personne is autorize to enter in the systeme.";
+    else handles.Respond.String = "This personne is not autorize to enter in the systeme.";
+    end
 endfunction
 
 

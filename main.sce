@@ -104,6 +104,11 @@ function distances = compare_lbp(image,database_lbp)
     disp("compare_lbp terminé");
 endfunction
 
+function registration(image, database_image, database_lbp)
+    
+    
+endfunction
+
 
 database_image = load_database_image();
 database_lbp = database_imagetolbp(database_image);
